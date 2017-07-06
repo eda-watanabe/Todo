@@ -26,3 +26,8 @@
 |作成日|createAt|long||
 |更新日|updateAt|long||
 |お気に入り|isFavorite|boolean|*chapter 3で追加|
+
+### 画面
+|一覧|新規作成|照会|
+|---|---|---|
+|![](Img/list.png)|![](Img/create.png)|![](Img/show.png)|
