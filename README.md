@@ -18,10 +18,11 @@
 
 ## モデル
 ### Todo
-| 項目 | 変数名 | 型 |
-|---|---|---|
-|id|id|long|
-|タイトル|title|String|
-|詳細|description|String|
-|作成日|createAt|long|
-|更新日|updateAt|long|
+| 項目 | 変数名 | 型 |補足|
+|---|---|---|---|
+|id|id|long||
+|タイトル|title|String||
+|詳細|description|String||
+|作成日|createAt|long||
+|更新日|updateAt|long||
+|お気に入り|isFavorite|boolean|*chapter 3で追加|
