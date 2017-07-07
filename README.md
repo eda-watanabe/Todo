@@ -47,7 +47,7 @@
     - layout
     - adapter
     - activity
-        - 画面遷移の処理は作成後に実装
+          - 画面遷移の処理は作成後に実装
 - create
     - layout
     - activity
