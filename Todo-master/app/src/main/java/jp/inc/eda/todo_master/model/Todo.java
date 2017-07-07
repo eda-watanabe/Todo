@@ -64,6 +64,27 @@ public class Todo {
     }
 
     /**
+     * Todoを更新する
+     * @param ormaDatabase
+     * @param todo
+     * @return
+     */
+    public static Observable<Integer> update(final OrmaDatabase ormaDatabase, final Todo todo) {
+        return Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<Integer> e) throws Exception {
+                e.onNext(ormaDatabase.updateTodo()
+                        .idEq(todo.id)
+                        .title(todo.title)
+                        .description(todo.description)
+                        .updateAt(System.currentTimeMillis())
+                        .execute());
+                e.onComplete();
+            }
+        });
+    }
+
+    /**
      * Todoを削除する
      * @param ormaDatabase
      * @param id

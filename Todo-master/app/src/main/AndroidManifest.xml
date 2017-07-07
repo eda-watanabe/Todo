@@ -19,7 +19,8 @@
         <activity
             android:name=".presentation.create.CreateTodoActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".presentation.show.ShowTodoActivity"></activity>
+        <activity android:name=".presentation.show.ShowTodoActivity"/>
+        <activity android:name=".presentation.edit.EditTodoActivity"/>
     </application>
 
 </manifest>

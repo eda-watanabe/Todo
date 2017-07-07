@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import io.reactivex.schedulers.Schedulers;
 import jp.inc.eda.todo_master.R;
 import jp.inc.eda.todo_master.model.OrmaDatabase;
 import jp.inc.eda.todo_master.model.Todo;
+import jp.inc.eda.todo_master.presentation.edit.EditTodoActivity;
 
 public class ShowTodoActivity extends AppCompatActivity {
 
@@ -43,6 +45,11 @@ public class ShowTodoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_todo);
         init();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         if (getIntent().hasExtra(EXTRA_ID)) {
             id = getIntent().getLongExtra(EXTRA_ID, 0);
             Todo todo = Todo.find(ormaDatabase, id);
@@ -73,6 +80,13 @@ public class ShowTodoActivity extends AppCompatActivity {
         textTitle = (TextView) findViewById(R.id.textTitle);
         textDescription = (TextView) findViewById(R.id.textDescription);
         textDate = (TextView) findViewById(R.id.textDate);
+
+        findViewById(R.id.btnEdit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(EditTodoActivity.newIntent(ShowTodoActivity.this, id));
+            }
+        });
     }
 
     private void showTodo(Todo todo) {
