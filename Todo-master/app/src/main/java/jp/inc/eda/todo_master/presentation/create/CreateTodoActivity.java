@@ -1,11 +1,15 @@
 package jp.inc.eda.todo_master.presentation.create;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 import jp.inc.eda.todo_master.R;
 import jp.inc.eda.todo_master.model.OrmaDatabase;
 import jp.inc.eda.todo_master.model.Todo;
@@ -50,11 +54,16 @@ public class CreateTodoActivity extends AppCompatActivity {
             todo.title = title;
             todo.description = description;
             todo.createAt = System.currentTimeMillis();
-            Todo.save(orma, todo);
-
-            Toast.makeText(editTitle.getContext(), "作成しました", Toast.LENGTH_SHORT).show();
-
-            finish();
+            Todo.save(orma, todo)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Consumer<Long>() {
+                        @Override
+                        public void accept(@NonNull Long aLong) throws Exception {
+                            Toast.makeText(editTitle.getContext(), "作成しました", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    });
         }
     };
 }

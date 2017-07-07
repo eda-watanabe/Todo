@@ -11,6 +11,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.annotations.NonNull;
+
 
 /**
  * Created by watanabe on 2017/07/06.
@@ -48,13 +53,29 @@ public class Todo {
      * @param ormaDatabase
      * @param todo
      */
-    public static void save(final OrmaDatabase ormaDatabase, final Todo todo) {
-        new Thread(new Runnable() {
+    public static Observable<Long> save(final OrmaDatabase ormaDatabase, final Todo todo) {
+        return Observable.create(new ObservableOnSubscribe<Long>() {
             @Override
-            public void run() {
-                ormaDatabase.insertIntoTodo(todo);
+            public void subscribe(@NonNull ObservableEmitter<Long> e) throws Exception {
+                e.onNext(ormaDatabase.insertIntoTodo(todo));
+                e.onComplete();
             }
-        }).start();
+        });
+    }
+
+    /**
+     * Todoを削除する
+     * @param ormaDatabase
+     * @param id
+     */
+    public static Observable<Integer> delete(final OrmaDatabase ormaDatabase, final long id) {
+        return Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<Integer> e) throws Exception {
+                e.onNext(ormaDatabase.deleteFromTodo().idEq(id).execute());
+                e.onComplete();
+            }
+        });
     }
 
     /**
