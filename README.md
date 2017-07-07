@@ -33,7 +33,7 @@
 |![](Img/list.png)|![](Img/create.png)|![](Img/show.png)|
 
 ### 備忘録
-#### 実装順
+#### 実装順（例
 - プロジェクト作成
 - build.gradleを記載
 - packageを作成
@@ -52,5 +52,5 @@
     - layout
     - activity
 - show
-    - layout
+    - layout
     - activity
