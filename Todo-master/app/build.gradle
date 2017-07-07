@@ -31,12 +31,10 @@ dependencies {
     compile "com.android.support:support-v4:$supportLibVersion"
     compile "com.android.support:recyclerview-v7:$supportLibVersion"
     compile "com.android.support:cardview-v7:$supportLibVersion"
+    compile 'com.android.support.constraint:constraint-layout:1.0.1'
 
     // Orma
     compile "com.github.gfx.android.orma:orma:$ormaVersion"
     annotationProcessor "com.github.gfx.android.orma:orma-processor:$ormaVersion"
-    // ReactiveX
-    compile 'io.reactivex.rxjava2:rxjava:2.0.2'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.1'
+
 }
