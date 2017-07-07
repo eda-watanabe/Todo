@@ -1,5 +1,8 @@
 # Todo
 
+[<img src="https://dply.me/6fwyh1/button/large" alt="Try it on your device via DeployGate">](https://dply.me/6fwyh1#install)
+
+
 ## 機能要件
 ### Phase 1
 - Todoを一覧で表示する
