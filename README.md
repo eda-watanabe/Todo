@@ -31,3 +31,26 @@
 |一覧|新規作成|照会|
 |---|---|---|
 |![](Img/list.png)|![](Img/create.png)|![](Img/show.png)|
+
+### 備忘録
+#### 実装順
+- プロジェクト作成
+- build.gradleを記載
+- packageを作成
+    - model
+    - presentation
+        - list
+        - create
+        - edit
+- model > Todo作成
+- list 作成
+    - layout
+    - adapter
+    - activity
+        - 画面遷移の処理は作成後に実装
+- create
+    - layout
+    - activity
+- show
+    - layout
+    - activity
