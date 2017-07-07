@@ -20,7 +20,7 @@
 ### Todo
 | 項目 | 変数名 | 型 |補足|
 |---|---|---|---|
-|id|id|long||
+|id|id|long|識別子|
 |タイトル|title|String||
 |詳細|description|String||
 |作成日|createAt|long||
